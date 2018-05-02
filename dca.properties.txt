@@ -35,20 +35,17 @@ default.dca.max_cost = 0
 
 ## -- dca buy settings which can be overridden per coin
 
-default.dca.buy.percentage = 100
-default.dca.buy.min_price_increase = 1
-default.dca.buy.max_price_increase = 30
-default.dca.buy.min_volume = 100
-default.dca.buy.min_order_book_volume_percentage = 100
 default.dca.buy.max_buy_spread = 3
-default.dca.buy.rebuy_timeout = 30
-default.dca.buy.trigger = -2.5
-default.dca.buy.trigger_1 = -2.5
-default.dca.buy.trigger_2 = -5
+default.dca.buy.max_price_increase = 30
+default.dca.buy.min_order_book_volume_percentage = 100
+default.dca.buy.min_price_increase = 1
+default.dca.buy.min_volume = 100
+default.dca.buy.percentage = 100
 default.dca.buy.percentage.1 = 100
 default.dca.buy.percentage.2 = 100
 default.dca.buy.percentage.3 = 100
 default.dca.buy.percentage.4 = 100
+default.dca.buy.rebuy_timeout = 30
 default.dca.buy.strategy.anderson.enabled = true
 default.dca.buy.strategy.lowbb.buy_value = 15
 default.dca.buy.strategy.lowbb.enabled = true
@@ -58,9 +55,34 @@ default.dca.buy.strategy.macd.enabled = true
 default.dca.buy.strategy.rsi.buy_value = 45
 default.dca.buy.strategy.rsi.buy_value_limit = 0
 default.dca.buy.strategy.rsi.enabled = true
+default.dca.buy.trailing = 0.25
+default.dca.buy.trigger = -2.5
+default.dca.buy.trigger.1 = -2.5
+default.dca.buy.trigger.2 = -5
 default.dca.buy.trigger.3 = -10
 default.dca.buy.trigger.4 = -20
-default.dca.buy.trailing = 0.25
+
+## -- dca buy strategy settings for future use, adress issues #286 and #296
+
+default.dca.buy.strategy.anderson.required = true/false		// does this make sense?
+default.dca.buy.strategy.lowbb.required = true/false
+default.dca.buy.strategy.macd.required = true/false
+default.dca.buy.strategy.rsi.required = true/false
+
+##
+## examples:
+##
+## - all set to false - start trailing when at least one
+##   of the enabled strategies is triggered by its buy_values
+## - lowbb set to true, others to false - start trailing when lowbb
+##   and at least one more strategy with "required" set to
+##   "false" is triggered by their buy_values
+## - lowbb and macd set to true, others to false - start trailing when
+##   lowbb and macd and at least one more strategy with "required" set
+##   to "false" is triggered by their buy_values
+## - all set to true - start trailing when all of the enabled strategies
+##   are triggered by their buy_values
+##
 
 ## -- dca sell settings which can be overridden per coin
 
@@ -78,3 +100,25 @@ default.dca.sell.strategy.stoploss.trigger = 0
 default.dca.sell.take_profit_percentage = 1
 default.dca.sell.take_profit_wait_time = 15
 default.dca.sell.trailing = 0.75
+
+## -- dca sell strategy settings for future use, adress issues #286 and #296
+
+default.dca.buy.strategy.gain.required = true/false
+default.dca.buy.strategy.highbb.required = true/false
+default.dca.buy.strategy.rsi.required = true/false
+default.dca.buy.strategy.stoploss.required = true/false		// does this make sense?
+
+##
+## examples:
+##
+## - all set to false - start trailing when at least one
+##   of the enabled strategies is triggered by its buy_values
+## - gain set to true, others to false - start trailing when lowbb
+##   and at least one more strategy with "required" set to
+##   "false" is triggered by their buy_values
+## - gain and highbb set to true, others to false - start trailing when
+##   lowbb and macd and at least one more strategy with "required" set
+##   to "false" is triggered by their buy_values
+## - all set to true - start trailing when all of the enabled strategies
+##   are triggered by their buy_values
+##
