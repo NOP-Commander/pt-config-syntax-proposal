@@ -1,0 +1,53 @@
+##
+## this is a draft of a proposal for a future config syntax in profit trailer
+##
+## - syntax is case-insensitive. iT dOEsNt mAttER hOw keYs ANd vALueS ArE wRiTtEn (issue #297)
+## - settings which are prefixed with "default." can be overridden
+##   with coin-specific values (never change a winning concept)
+## - settings are grouped with prefix to reflect their scope
+## - all settings could basically go into a single file but it
+##   should possible and up to the user whether to split (for
+##   convenience and/or readability) or not to split
+## - split-up config files might be named "filename.properties"
+## - on startup profit trailer imports all files named "*.properties"
+##   from the folder "initialization"
+## - all three config files (pairs, dca and indicators) could be
+##   merged into a single super-config-file if the user is up to do so
+## - well formed config files kick ass
+##
+## this is an example for indicators.properties using the proposed config syntax
+## author: NOP-Commander
+##
+
+## -- indicator settings
+
+indicator.bb.std = 2
+indicator.bb.length = 20
+indicator.bb.candle_period = 300
+
+indicator.sma.cross_candles = 2
+indicator.sma.candle_period = 300
+indicator.sma.fast_length = 8		// just a thought: indicator.sma.length.fast/slow
+indicator.sma.slow_length = 13		// see above
+
+## comment: the level of grouping is a question of (non)sense. if
+## sma.length would have more than one property this might make sense.
+## for just one property grouping is kinda nonsense, so keeping
+## sma.slow_length and sma.fast_length would be the way to go imho.
+
+indicator.ema.cross_candles = 3
+indicator.ema.candle_period = 300
+indicator.ema.fast_length = 8
+indicator.ema.slow_length = 13
+
+indicator.rsi.candle_period = 300
+indicator.rsi.length = 14
+
+indicator.stoch.length = 14
+
+indicator.macd.candle_period = 300
+indicator.macd.fast_length = 12		// see above
+indicator.macd.slow_length = 26		// see above
+indicator.macd.signal = 9
+
+indicator.som_trigger_length = 288

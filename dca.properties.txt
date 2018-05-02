@@ -1,0 +1,80 @@
+##
+## this is a draft of a proposal for a future config syntax in profit trailer
+##
+## - syntax is case-insensitive. iT dOEsNt mAttER hOw keYs ANd vALueS ArE wRiTtEn (issue #297)
+## - settings which are prefixed with "default." can be overridden
+##   with coin-specific values (never change a winning concept)
+## - settings are grouped with prefix to reflect their scope
+## - all settings could basically go into a single file but it
+##   should possible and up to the user whether to split (for
+##   convenience and/or readability) or not to split
+## - split-up config files might be named "filename.properties"
+## - on startup profit trailer imports all files named "*.properties"
+##   from the folder "initialization"
+## - all three config files (pairs, dca and indicators) could be
+##   merged into a single super-config-file if the user is up to
+## - well formed config files kick ass
+##
+## this is an example for dca.properties using the proposed config syntax
+## author: NOP-Commander
+##
+
+## -- dca settings
+
+dca.balance.keep = 0
+dca.balance.keep_percentage = 0
+dca.orderbook_profit_calculation = true
+dca.som_buy_trigger = -5
+
+## -- dca settings which can be overridden per coin
+
+default.dca.enabled = -2.5
+default.dca.ignore_sell_only_mode = true
+default.dca.max_buy_times = 4
+default.dca.max_cost = 0
+
+## -- dca buy settings which can be overridden per coin
+
+default.dca.buy.percentage = 100
+default.dca.buy.min_price_increase = 1
+default.dca.buy.max_price_increase = 30
+default.dca.buy.min_volume = 100
+default.dca.buy.min_order_book_volume_percentage = 100
+default.dca.buy.max_buy_spread = 3
+default.dca.buy.rebuy_timeout = 30
+default.dca.buy.trigger = -2.5
+default.dca.buy.trigger_1 = -2.5
+default.dca.buy.trigger_2 = -5
+default.dca.buy.percentage.1 = 100
+default.dca.buy.percentage.2 = 100
+default.dca.buy.percentage.3 = 100
+default.dca.buy.percentage.4 = 100
+default.dca.buy.strategy.anderson.enabled = true
+default.dca.buy.strategy.lowbb.buy_value = 15
+default.dca.buy.strategy.lowbb.enabled = true
+default.dca.buy.strategy.macd.buy_value = -0.00000001
+default.dca.buy.strategy.macd.buy_value_limit = 0
+default.dca.buy.strategy.macd.enabled = true
+default.dca.buy.strategy.rsi.buy_value = 45
+default.dca.buy.strategy.rsi.buy_value_limit = 0
+default.dca.buy.strategy.rsi.enabled = true
+default.dca.buy.trigger.3 = -10
+default.dca.buy.trigger.4 = -20
+default.dca.buy.trailing = 0.25
+
+## -- dca sell settings which can be overridden per coin
+
+default.dca.sell.max_profit = 0
+default.dca.sell.pending_order_wait_time = 0
+default.dca.sell.strategy.gain.enabled = true
+default.dca.sell.strategy.gain.sell_value = 1
+default.dca.sell.strategy.highbb.enabled = true
+default.dca.sell.strategy.highbb.sell_value = 20
+default.dca.sell.strategy.rsi.enabled = true
+default.dca.sell.strategy.rsi.sell_value = 55
+default.dca.sell.strategy.stoploss.enabled = false
+default.dca.sell.strategy.stoploss.timeout = 0
+default.dca.sell.strategy.stoploss.trigger = 0
+default.dca.sell.take_profit_percentage = 1
+default.dca.sell.take_profit_wait_time = 15
+default.dca.sell.trailing = 0.75

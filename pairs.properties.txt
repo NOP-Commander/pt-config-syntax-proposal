@@ -1,0 +1,267 @@
+##
+## this is a draft of a proposal for a future config syntax in profit trailer
+##
+## - syntax is case-insensitive. iT dOEsNt mAttER hOw keYs ANd vALueS ArE wRiTtEn (issue #297)
+## - settings which are prefixed with "default." can be overridden
+##   with coin-specific values (never change a winning concept)
+## - settings are grouped with prefix to reflect their scope
+## - all settings could basically go into a single file but it
+##   should possible and up to the user whether to split (for
+##   convenience and/or readability) or not to split
+## - split-up config files might be named "filename.properties"
+## - on startup profit trailer imports all files named "*.properties"
+##   from the folder "initialization"
+## - all three config files (pairs, dca and indicators) could be
+##   merged into a single super-config-file if the user is up to
+## - well formed config files kick ass
+##
+## this is an example for pairs.properties using the proposed config syntax
+## author: NOP-Commander
+##
+
+## -- trading settings
+
+trading.balance.keep = 0
+trading.balance.keep_percentage = 0
+//trading.btc_dust = 0.00105			// initial version
+trading.dust.btc = 0.00105				// updated, i prefer this syntax
+trading.enabled_pairs = all
+trading.hidden_pairs = bnb
+trading.market = btc
+trading.max_pairs = 5
+trading.start_balance = 0
+
+## -- trading settings which can be overridden per coin
+
+default.trading.enabled = true
+
+## -- som settings (i thought the sell only mode triggers needed some grouping)
+
+som.consecutive.buy.trigger = 6			// initial version
+som.consecutive_buy_trigger = 6			// updated, see my comment to grouping in indicators.txt
+som.consecutive.sell.trigger = 4		// initial version
+som.consecutive_sell_trigger = 4		// see above
+som.price.trigger_market = btc
+som.price.drop_recover_trigger = 3
+som.price.drop_trigger = 10
+som.price.rise_recover_trigger = 6
+som.price.rise_trigger = 7
+
+## -- som settings which can be overridden per coin
+
+default.som.enabled = false
+## maybe coin-specific?
+default.som.price.drop_recover_trigger = 3
+default.som.price.drop_trigger = 10
+default.som.price.rise_recover_trigger = 6
+default.som.price.rise_trigger = 7
+## end of maybe
+
+## -- buy settings
+
+buy.orderbook_profit_calculation = true
+buy.pair_min_listed_days = 15
+
+## -- buy settings which can be overridden per coin
+
+default.buy.min_volume = 1500
+default.buy.min_price = 0.00000600 
+default.buy.min_price_increase = -3
+default.buy.max_price_increase = 30
+default.buy.max_spread = 3
+default.buy.initial_cost = 0
+default.buy.initial_cost_percentage = 5
+default.buy.trailing = 0
+default.buy.rebuy_timeout = 15
+default.buy.min_order_book_volume_percentage = 105
+
+## -- buy strategy settings which can be overridden per coin
+
+default.buy.strategy.lowbb.enabled = true
+default.buy.strategy.lowbb.buy_value = 20
+default.buy.strategy.lowbb.buy_value_limit = 0
+
+default.buy.strategy.macd.enabled = true
+default.buy.strategy.macd.buy_value = -0.00000001
+default.buy.strategy.macd.buy_value_limit = 0
+
+default.buy.strategy.emaspread.enabled = true
+default.buy.strategy.emaspread.buy_value = -0.25
+
+default.buy.strategy.rsi.enabled = true
+default.buy.strategy.rsi.buy_value = 40
+default.buy.strategy.rsi.buy_value_limit = 0
+
+## -- buy strategy settings for future use, adress issues #286 and #296
+
+default.buy.strategy.lowbb.required = true/false
+default.buy.strategy.macd.required = true/false
+default.buy.strategy.emaspread.required = true/false
+default.buy.strategy.rsi.required = true/false
+
+##
+## examples:
+##
+## - all set to false - start trailing when at least one
+##   of the enabled strategies is triggered by its buy_values
+## - lowbb set to true, others to false - start trailing when lowbb
+##   and at least one more strategy with "required" set to
+##   "false" is triggered by their buy_values
+## - lowbb and macd set to true, others to false - start trailing when
+##   lowbb and macd and at least one more strategy with "required" set
+##   to "false" is triggered by their buy_values
+## - all set to true - start trailing when all of the enabled strategies
+##   are triggered by their buy_values
+##
+
+## -- sell strategies which can be overridden per coin
+
+default.sell.strategy.highbb.enabled = true
+default.sell.strategy.highbb.sell_value = 20
+
+default.sell.strategy.gain.enabled = true
+default.sell.strategy.gain.sell_value = 2
+
+default.sell.strategy.rsi.enabled = true
+default.sell.strategy.rsi.sell_value = 55
+
+default.sell.strategy.stoploss.enabled = false
+default.sell.strategy.stoploss.timeout = 120
+default.sell.strategy.stoploss.trigger = 0
+
+## -- sell strategy settings for future use, adress issues #286 and #296
+
+default.sell.strategy.highbb.required = true/false
+default.sell.strategy.gain.required = true/false
+default.sell.strategy.rsi.required = true/false
+## see above for examples
+
+## -- sell settings which can be overridden per coin
+
+default.sell.combined_cancel_pending_trigger = 0
+default.sell.max_profit = 0
+default.sell.panic_sell_enabled = false
+default.sell.pending_order_wait_time = 0
+default.sell.take_profit_percentage = 1
+default.sell.take_profit_wait_time = 5
+default.sell.trailing = 0.75
+
+## -- coin specific settings
+
+bnb.trading.enabled = false
+8bit.trading.enabled = false
+adc.trading.enabled = false
+am.trading.enabled = false
+ams.trading.enabled = false
+apex.trading.enabled = false
+apx.trading.enabled = false
+arb.trading.enabled = false
+bits.trading.enabled = false
+bitz.trading.enabled = false
+blc.trading.enabled = false
+bob.trading.enabled = false
+bsty.trading.enabled = false
+bta.trading.enabled = false
+btcd.trading.enabled = false
+ccn.trading.enabled = false
+club.trading.enabled = false
+cpc.trading.enabled = false
+crbit.trading.enabled = false
+crypt.trading.enabled = false
+ctr.trading.enabled = false
+dar.trading.enabled = false
+dgc.trading.enabled = false
+draco.trading.enabled = false
+dtc.trading.enabled = false
+fair.trading.enabled = false
+fc2.trading.enabled = false
+frk.trading.enabled = false
+fsc2.trading.enabled = false
+gcr.trading.enabled = false
+gemz.trading.enabled = false
+ghc.trading.enabled = false
+gp.trading.enabled = false
+grt.trading.enabled = false
+hkg.trading.enabled = false
+hyper.trading.enabled = false
+hz.trading.enabled = false
+j.trading.enabled = false
+kr.trading.enabled = false
+lxc.trading.enabled = false
+max.trading.enabled = false
+mec.trading.enabled = false
+mtl.trading.enabled = false
+mnd.trading.enabled = false
+mtr.trading.enabled = false
+myst.trading.enabled = false
+mzc.trading.enabled = false
+naut.trading.enabled = false
+net.trading.enabled = false
+neu.trading.enabled = false
+ntrn.trading.enabled = false
+oc.trading.enabled = false
+orb.trading.enabled = false
+pdc.trading.enabled = false
+pkb.trading.enabled = false
+prime.trading.enabled = false
+pxi.trading.enabled = false
+root.trading.enabled = false
+safex.trading.enabled = false
+scot.trading.enabled = false
+scrt.trading.enabled = false
+sfr.trading.enabled = false
+slg.trading.enabled = false
+sling.trading.enabled = false
+sngls.trading.enabled = false
+soon.trading.enabled = false
+sprts.trading.enabled = false
+ssd.trading.enabled = false
+start.trading.enabled = false
+steps.trading.enabled = false
+stv.trading.enabled = false
+swing.trading.enabled = false
+tes.trading.enabled = false
+tit.trading.enabled = false
+tri.trading.enabled = false
+trk.trading.enabled = false
+u.trading.enabled = false
+ufo.trading.enabled = false
+uniq.trading.enabled = false
+unit.trading.enabled = false
+uno.trading.enabled = false
+utc.trading.enabled = false
+vior.trading.enabled = false
+viral.trading.enabled = false
+vpn.trading.enabled = false
+warp.trading.enabled = false
+xaur.trading.enabled = false
+xbb.trading.enabled = false
+xc.trading.enabled = false
+xco.trading.enabled = false
+xdq.trading.enabled = false
+xpy.trading.enabled = false
+xqn.trading.enabled = false
+xseed.trading.enabled = false
+xtc.trading.enabled = false
+ybc.trading.enabled = false
+bitb.trading.enabled = false
+cann.trading.enabled = false
+club.trading.enabled = false
+dgd.trading.enabled = false
+doge.trading.enabled = false
+dope.trading.enabled = false
+hsr.trading.enabled = false
+meme.trading.enabled = false
+mer.trading.enabled = false
+mtl.trading.enabled = false
+pot.trading.enabled = false
+powr.trading.enabled = false
+sbd.trading.enabled = false
+sc.trading.enabled = false
+synx.trading.enabled = false
+time.trading.enabled = false
+thc.trading.enabled = false
+time.trading.enabled = false
+tkn.trading.enabled = false
+trig.trading.enabled = false
+trust.trading.enabled = false
