@@ -27,13 +27,8 @@ indicator.bb.candle_period = 300
 
 indicator.sma.cross_candles = 2
 indicator.sma.candle_period = 300
-indicator.sma.fast_length = 8		// just a thought: indicator.sma.length.fast/slow
-indicator.sma.slow_length = 13		// see above
-
-## comment: the level of grouping is a question of (non)sense. if
-## sma.length would have more than one property this might make sense.
-## for just one property grouping is kinda nonsense, so keeping
-## sma.slow_length and sma.fast_length would be the way to go imho.
+indicator.sma.fast_length = 8
+indicator.sma.slow_length = 13
 
 indicator.ema.cross_candles = 3
 indicator.ema.candle_period = 300

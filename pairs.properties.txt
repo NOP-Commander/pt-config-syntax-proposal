@@ -37,10 +37,8 @@ default.trading.enabled = true
 
 ## -- som settings (i thought the sell only mode triggers needed some grouping)
 
-som.consecutive.buy.trigger = 6			// initial version
-som.consecutive_buy_trigger = 6			// updated, see my comment to grouping in indicators.txt
-som.consecutive.sell.trigger = 4		// initial version
-som.consecutive_sell_trigger = 4		// see above
+som.consecutive_buy_trigger = 6
+som.consecutive_sell_trigger = 4
 som.price.trigger_market = btc
 som.price.drop_recover_trigger = 3
 som.price.drop_trigger = 10
@@ -80,61 +78,41 @@ default.buy.min_order_book_volume_percentage = 105
 default.buy.strategy.lowbb.enabled = true
 default.buy.strategy.lowbb.buy_value = 20
 default.buy.strategy.lowbb.buy_value_limit = 0
-
 default.buy.strategy.macd.enabled = true
 default.buy.strategy.macd.buy_value = -0.00000001
 default.buy.strategy.macd.buy_value_limit = 0
-
 default.buy.strategy.emaspread.enabled = true
 default.buy.strategy.emaspread.buy_value = -0.25
-
 default.buy.strategy.rsi.enabled = true
 default.buy.strategy.rsi.buy_value = 40
 default.buy.strategy.rsi.buy_value_limit = 0
 
 ## -- buy strategy settings for future use, adress issues #286 and #296
+## JUST A PROPOSAL, NOT YET IMPLEMENTED. see help.txt for more infos
 
 default.buy.strategy.lowbb.required = true/false
 default.buy.strategy.macd.required = true/false
 default.buy.strategy.emaspread.required = true/false
 default.buy.strategy.rsi.required = true/false
 
-##
-## examples:
-##
-## - all set to false - start trailing when at least one
-##   of the enabled strategies is triggered by its buy_values
-## - lowbb set to true, others to false - start trailing when lowbb
-##   and at least one more strategy with "required" set to
-##   "false" is triggered by their buy_values
-## - lowbb and macd set to true, others to false - start trailing when
-##   lowbb and macd and at least one more strategy with "required" set
-##   to "false" is triggered by their buy_values
-## - all set to true - start trailing when all of the enabled strategies
-##   are triggered by their buy_values
-##
-
 ## -- sell strategies which can be overridden per coin
 
 default.sell.strategy.highbb.enabled = true
 default.sell.strategy.highbb.sell_value = 20
-
 default.sell.strategy.gain.enabled = true
 default.sell.strategy.gain.sell_value = 2
-
 default.sell.strategy.rsi.enabled = true
 default.sell.strategy.rsi.sell_value = 55
-
 default.sell.strategy.stoploss.enabled = false
 default.sell.strategy.stoploss.timeout = 120
 default.sell.strategy.stoploss.trigger = 0
 
 ## -- sell strategy settings for future use, adress issues #286 and #296
+## JUST A PROPOSAL, NOT YET IMPLEMENTED. see help.txt for more infos
 
 default.sell.strategy.highbb.required = true/false
 default.sell.strategy.gain.required = true/false
 default.sell.strategy.rsi.required = true/false
-## see above for examples
 
 ## -- sell settings which can be overridden per coin
 

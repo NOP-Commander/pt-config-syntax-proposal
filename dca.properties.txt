@@ -63,26 +63,12 @@ default.dca.buy.trigger.3 = -10
 default.dca.buy.trigger.4 = -20
 
 ## -- dca buy strategy settings for future use, adress issues #286 and #296
+## JUST A PROPOSAL FOR A FUTURE RELEASE. see help.txt for more infos
 
 default.dca.buy.strategy.anderson.required = true/false		// does this make sense?
 default.dca.buy.strategy.lowbb.required = true/false
 default.dca.buy.strategy.macd.required = true/false
 default.dca.buy.strategy.rsi.required = true/false
-
-##
-## examples:
-##
-## - all set to false - start trailing when at least one
-##   of the enabled strategies is triggered by its buy_values
-## - lowbb set to true, others to false - start trailing when lowbb
-##   and at least one more strategy with "required" set to
-##   "false" is triggered by their buy_values
-## - lowbb and macd set to true, others to false - start trailing when
-##   lowbb and macd and at least one more strategy with "required" set
-##   to "false" is triggered by their buy_values
-## - all set to true - start trailing when all of the enabled strategies
-##   are triggered by their buy_values
-##
 
 ## -- dca sell settings which can be overridden per coin
 
@@ -102,23 +88,9 @@ default.dca.sell.take_profit_wait_time = 15
 default.dca.sell.trailing = 0.75
 
 ## -- dca sell strategy settings for future use, adress issues #286 and #296
+## JUST A PROPOSAL FOR A FUTURE RELEASE. see help.txt for more infos
 
 default.dca.buy.strategy.gain.required = true/false
 default.dca.buy.strategy.highbb.required = true/false
 default.dca.buy.strategy.rsi.required = true/false
 default.dca.buy.strategy.stoploss.required = true/false		// does this make sense?
-
-##
-## examples:
-##
-## - all set to false - start trailing when at least one
-##   of the enabled strategies is triggered by its buy_values
-## - gain set to true, others to false - start trailing when lowbb
-##   and at least one more strategy with "required" set to
-##   "false" is triggered by their buy_values
-## - gain and highbb set to true, others to false - start trailing when
-##   lowbb and macd and at least one more strategy with "required" set
-##   to "false" is triggered by their buy_values
-## - all set to true - start trailing when all of the enabled strategies
-##   are triggered by their buy_values
-##
