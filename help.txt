@@ -1,6 +1,9 @@
-let me show you how i think some logic link for buy/sell strategies could be implemented in config-syntax.
+introduction
+------------
 
-the property is named "required" and can be found on the following config-keys.
+let me show you how i think some logic link for buy/sell strategies could be
+implemented in config-syntax. the property is named "required" and can be
+found on the following config-keys.
 
 1. buy strategies which can be overridden per coin
 
@@ -27,11 +30,12 @@ default.dca.buy.strategy.rsi.required = true/false
 default.dca.sell.strategy.gain.required = true/false
 default.dca.sell.strategy.highbb.required = true/false
 default.dca.sell.strategy.rsi.required = true/false
-default.dca.sell.strategy.stoploss.required = true/false		// does this make sense?
+default.dca.sell.strategy.stoploss.required = true/false	// does this make sense?
 
 
 
-Examples:
+examples
+--------
 
 1. some set to true, some set to false
 
@@ -52,7 +56,7 @@ default.buy.strategy.rsi.required = false
 3. all set to true
 
 default.buy.strategy.macd.required = true
-default.buy.strategy.rsi.required = tre
+default.buy.strategy.rsi.required = true
 
 - start trailing when macd and rsi and at least one more strategy
   with "required" set to "false" are triggered by their buy_values
@@ -60,6 +64,7 @@ default.buy.strategy.rsi.required = tre
 
 
 pitfalls/logic bombs
+--------------------
 
 - if you have enabled just one buy/sell strategy, it doesn't matter
   whether you set "required" to "true" or "false".
@@ -67,3 +72,11 @@ pitfalls/logic bombs
   to "true", there is no other strategy to wait for since no more are
   enabled. this setting should behave exactly like one strategy set
   to "true" and the other one to "false".
+
+
+
+small note aka personal prediction
+----------------------------------
+
+the more strategies get implemented in Profit Trailer the more valuable
+such a feature will be.
