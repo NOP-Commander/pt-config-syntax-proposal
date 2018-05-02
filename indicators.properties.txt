@@ -41,8 +41,8 @@ indicator.rsi.length = 14
 indicator.stoch.length = 14
 
 indicator.macd.candle_period = 300
-indicator.macd.fast_length = 12		// see above
-indicator.macd.slow_length = 26		// see above
+indicator.macd.fast_length = 12
+indicator.macd.slow_length = 26
 indicator.macd.signal = 9
 
 indicator.som_trigger_length = 288
