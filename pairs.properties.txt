@@ -23,8 +23,7 @@
 
 trading.balance.keep = 0
 trading.balance.keep_percentage = 0
-//trading.btc_dust = 0.00105			// initial version
-trading.dust.btc = 0.00105				// updated, i prefer this syntax
+trading.dust.btc = 0.00105
 trading.enabled_pairs = all
 trading.hidden_pairs = bnb
 trading.market = btc
@@ -88,12 +87,13 @@ default.buy.strategy.rsi.buy_value = 40
 default.buy.strategy.rsi.buy_value_limit = 0
 
 ## -- buy strategy settings for future use, adress issues #286 and #296
-## JUST A PROPOSAL, NOT YET IMPLEMENTED. see help.txt for more infos
+## JUST A PROPOSAL FOR A FUTURE RELEASE. see help.txt for more infos
 
 default.buy.strategy.lowbb.required = true/false
 default.buy.strategy.macd.required = true/false
 default.buy.strategy.emaspread.required = true/false
 default.buy.strategy.rsi.required = true/false
+
 
 ## -- sell strategies which can be overridden per coin
 
@@ -108,7 +108,7 @@ default.sell.strategy.stoploss.timeout = 120
 default.sell.strategy.stoploss.trigger = 0
 
 ## -- sell strategy settings for future use, adress issues #286 and #296
-## JUST A PROPOSAL, NOT YET IMPLEMENTED. see help.txt for more infos
+## JUST A PROPOSAL FOR A FUTURE RELEASE. see help.txt for more infos
 
 default.sell.strategy.highbb.required = true/false
 default.sell.strategy.gain.required = true/false
