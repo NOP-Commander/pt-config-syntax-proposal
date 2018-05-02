@@ -1,0 +1,69 @@
+let me show you how i think some logic link for buy/sell strategies could be implemented in config-syntax.
+
+the property is named "required" and can be found on the following config-keys.
+
+1. buy strategies which can be overridden per coin
+
+default.buy.strategy.lowbb.required = true/false
+default.buy.strategy.macd.required = true/false
+default.buy.strategy.emaspread.required = true/false
+default.buy.strategy.rsi.required = true/false
+
+2. sell strategies which can be overridden per coin
+
+default.sell.strategy.highbb.required = true/false
+default.sell.strategy.gain.required = true/false
+default.sell.strategy.rsi.required = true/false
+
+3. dca buy strategies which can be overridden per coin
+
+default.dca.buy.strategy.anderson.required = true/false		// does this make sense?
+default.dca.buy.strategy.lowbb.required = true/false
+default.dca.buy.strategy.macd.required = true/false
+default.dca.buy.strategy.rsi.required = true/false
+
+4. dca sell strategies which can be overridden per coin
+
+default.dca.sell.strategy.gain.required = true/false
+default.dca.sell.strategy.highbb.required = true/false
+default.dca.sell.strategy.rsi.required = true/false
+default.dca.sell.strategy.stoploss.required = true/false		// does this make sense?
+
+
+
+Examples:
+
+1. some set to true, some set to false
+
+default.buy.strategy.macd.required = true
+default.buy.strategy.rsi.required = false
+
+- start trailing when macd and at least one more strategy with "required" set
+  to "false" are triggered by their buy_values
+
+2. all set to false
+
+default.buy.strategy.macd.required = false
+default.buy.strategy.rsi.required = false
+
+- start trailing when any strategy with "required" set
+  to "false" is triggered by its buy_values
+
+3. all set to true
+
+default.buy.strategy.macd.required = true
+default.buy.strategy.rsi.required = tre
+
+- start trailing when macd and rsi and at least one more strategy
+  with "required" set to "false" are triggered by their buy_values
+
+
+
+pitfalls/logic bombs
+
+- if you have enabled just one buy/sell strategy, it doesn't matter
+  whether you set "required" to "true" or "false".
+- if you have enabled two buy strategies and both have "required" set
+  to "true", there is no other strategy to wait for since no more are
+  enabled. this setting should behave exactly like one strategy set
+  to "true" and the other one to "false".
