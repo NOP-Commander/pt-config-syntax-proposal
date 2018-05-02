@@ -90,7 +90,7 @@ default.dca.sell.trailing = 0.75
 ## -- dca sell strategy settings for future use, adress issues #286 and #296
 ## JUST A PROPOSAL FOR A FUTURE RELEASE. see help.txt for more infos
 
-default.dca.buy.strategy.gain.required = true/false
-default.dca.buy.strategy.highbb.required = true/false
-default.dca.buy.strategy.rsi.required = true/false
-default.dca.buy.strategy.stoploss.required = true/false		// does this make sense?
+default.dca.sell.strategy.gain.required = true/false
+default.dca.sell.strategy.highbb.required = true/false
+default.dca.sell.strategy.rsi.required = true/false
+default.dca.sell.strategy.stoploss.required = true/false		// does this make sense?
