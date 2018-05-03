@@ -34,6 +34,36 @@ trading.start_balance = 0
 
 default.trading.enabled = true
 
+## -- panic settings for future use, adress issues #276
+## JUST A PROPOSAL FOR A FUTURE RELEASE. see help.txt for more infos
+
+panic.global.balance_keep = 0				// keep amount of currency set in trading.market
+panic.global.balance_keep_percentage = 0	// same as above but keep a percentage
+panic.global.exit_currency = usdt/tusd/usd	// your exit currency which you want the currency set in trading.market sold to
+panic.global.sell_now = true/false			// setting this to true would actually fire the global panic sell
+panic.global.ignore_hidden_pairs = true/false	// ignore coins you excluded from trading like bnb
+panic.global.ignore_pending = true/false	// ignore coins shown with pending orders (is this possible anyway? can pt cancel open orders which were placed manually?)
+
+## -- panic settings which can be overridden per coin for future use, adress issues #276
+## JUST A PROPOSAL FOR A FUTURE RELEASE. see help.txt for more infos
+
+default.panic.global.sell_enabled = true/false	// if set to true coins will be included in a global panic sell
+## i renamed DEFAULT_panic_sell_enabled to fit to the new scheme and sharpened the naming
+default.panic.sell_now = true/false
+
+##
+## what's the difference between
+## (a) default.panic.sell_now and
+## (b) panic.global.sell_now?
+##
+## - (b) can sell excluded coins if configured to
+## - (b) can sell pending coins (if that is possible, i feel like it's impossible)
+## - (b) after all coins are sold (or maybe while selling in ongoing), the currency
+##       defined in trading.market gets sold against the currency defined in
+##       exit_currency but the configured keep or keep_percentage
+## - (b) can save your ass in big style "at your fingertip" (;
+##
+
 ## -- som settings (i thought the sell only mode triggers needed some grouping)
 
 som.consecutive_buy_trigger = 6
@@ -93,7 +123,6 @@ default.buy.strategy.lowbb.required = true/false
 default.buy.strategy.macd.required = true/false
 default.buy.strategy.emaspread.required = true/false
 default.buy.strategy.rsi.required = true/false
-
 
 ## -- sell strategies which can be overridden per coin
 
